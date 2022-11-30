@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace My_Monster_Hunter
 {
-    public partial class frmMonsterHunter : Form
+    public partial class frmMainMenu : Form
     {
-        public frmMonsterHunter()
+        public frmMainMenu()
         {
             InitializeComponent();
         }

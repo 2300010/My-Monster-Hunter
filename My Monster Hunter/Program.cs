@@ -16,7 +16,7 @@ namespace My_Monster_Hunter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMonsterHunter());
+            Application.Run(new frmMainMenu());
         }
     }
 }

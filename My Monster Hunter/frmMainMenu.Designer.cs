@@ -1,6 +1,6 @@
 ﻿namespace My_Monster_Hunter
 {
-    partial class frmMonsterHunter
+    partial class frmMainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 552);
             this.Name = "frmMonsterHunter";
-            this.Text = "Form1";
+            this.Text = "Monster Hunter";
             this.ResumeLayout(false);
 
         }
