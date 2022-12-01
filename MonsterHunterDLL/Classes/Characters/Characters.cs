@@ -3,9 +3,16 @@ namespace MonsterHunterDLL
 {
     public abstract class Characters
     {
+        #region Constants
         //Declare constants to limit stats
-        protected const int MAX_POWER = 7;
-        protected const int MAX_DEFENSE = 4;
+        public const float MAX_POWER = 7f;
+        public const float MAX_DEFENSE = 4f;
+        public const float MAX_HP = 30f;
+        #endregion
+
+        #region Mouvement Stats
+        //Declare variable for the freeze time when moving
+        private int freezeTime = 0;
 
         //Declare variables for character position
         private int positionX = 0;
@@ -14,36 +21,36 @@ namespace MonsterHunterDLL
         //Declare variables for character max position
         private int maxPositionX = 0;
         private int maxPositionY = 0;
-
-        //Declare variables for character stats
-        #region Stats Properties
-        protected int maxHp = 30;
-        private int actualHp = 0;
-        private int power = 0;
-        private int defense = 0;
         #endregion
 
-        //Declare variable for the freeze time when moving
-        protected int freezeTime = 0;
+        #region Stats Properties
+        //Declare variables for character stats
+        private float actualHp = 0f;
+        private float power = 0f;
+        private float defense = 0f;
+        #endregion
 
+        #region Constructors
+        //Declare constructor to force two variables on creation
         protected Characters(int positionX, int positionY)
         {
             this.positionX = positionX;
             this.positionY = positionY;
         }
-
-        //protected Characters(int positionX, int positionY, int maxPositionX, int maxPositionY)
-        //{
-        //    this.maxPositionX = maxPositionX;
-        //    this.maxPositionY = maxPositionY;
-        //    this.positionX = positionX;
-        //    this.positionY = positionY;
-        //}
-
+        
+        //Declare constructor to access 2 more variables if necessary
+        protected Characters(int positionX, int positionY, int maxPositionX, int maxPositionY)
+        {
+            this.maxPositionX = maxPositionX;
+            this.maxPositionY = maxPositionY;
+            this.positionX = positionX;
+            this.positionY = positionY;
+        }
+        #endregion
 
         #region Getters/Setters
         //Declare getter and setter for positionX
-        protected int PositionX 
+        public int PositionX 
         { 
             get => positionX; 
             set
@@ -66,7 +73,7 @@ namespace MonsterHunterDLL
         }
 
         //Declare getter and setter for positionY
-        protected int PositionY 
+        public int PositionY 
         { 
             get => positionY; 
             set
@@ -87,14 +94,14 @@ namespace MonsterHunterDLL
         }
 
         //Declare getter and setter for actualHp
-        protected int ActualHp 
+        public float ActualHp 
         { 
             get => actualHp;
             set 
             {   //Verify if value is higher than maxHp
-                if (value > maxHp)
+                if (value > MAX_HP)
                 {   //Set actualHp back to maxHp
-                    actualHp = maxHp;
+                    actualHp = MAX_HP;
                 }
                 else
                 {   //Set actualHp to new value
@@ -104,7 +111,7 @@ namespace MonsterHunterDLL
         }
 
         //Declare getter and setter for power
-        protected int Power 
+        public float Power 
         { 
             get => power; 
             set
@@ -125,7 +132,7 @@ namespace MonsterHunterDLL
         }
 
         //Declare getter and setter for defense
-        protected int Defense 
+        public float Defense 
         { 
             get => defense; 
             set
@@ -144,11 +151,13 @@ namespace MonsterHunterDLL
                 }
             } 
         }
+
+        public int FreezeTime { get => freezeTime; set => freezeTime = value; }
         #endregion
 
         #region Methods
         //Declare abstract method to verify futur position
-        public abstract bool NextPositionOccupied(int X, int Y);
+        public abstract bool CollisionDetector(int X, int Y);
 
         //Declare mehtod to verify if character is dead
         public bool IsDead()

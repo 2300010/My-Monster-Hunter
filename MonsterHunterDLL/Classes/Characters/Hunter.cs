@@ -2,15 +2,31 @@
 
 namespace MonsterHunterDLL.Classes
 {
+    //Declare enum to access every state from hunter class
+    public enum State
+    {
+        Normal,
+        Strong,
+        Poisoned,
+        Invisible,
+        Fast
+    }
+
     public class Hunter : Characters
     {
-        //Declare constant for the maximum score
+        #region Constants MAX
+        //Declare constant for the max value/length & base value
         private const int MAX_SCORE = 100000;
+        public const int MAX_NAME_LENGTH = 20;
+        public const int BASE_FREEZE_TIME = 1000;
+        #endregion
 
+        #region Hunter Variables
         //Declare variable for hunter
         private string name = "";
         private int score = 0;
-        private string state = "";
+        private State hunterState;
+        #endregion
 
         #region Getter/Setter
         //Declare getter and setter for name
@@ -19,7 +35,7 @@ namespace MonsterHunterDLL.Classes
             get => name;
             set
             {   //Verify if length of the name is more than 20 characters
-                if (value.Length > 20)
+                if (value.Length > MAX_NAME_LENGTH)
                 {   //Set name back at 0 character
                     name = "";
                 }
@@ -50,22 +66,21 @@ namespace MonsterHunterDLL.Classes
                 }
             }
         }
+
+        //Declare getter and setter for state
+        public State HunterState { get => hunterState; set => hunterState = value; }
         #endregion
 
         //Declare constructor for the hunter
         public Hunter(int positionX, int positionY) : base(positionX, positionY)
-        {   
-            //Set freeze time to 1 second on creation
-            this.freezeTime = 1;
-
-            //Set state to normal on creation
-            this.state = "Normal";
+        {   //Initialize freeze time
+            this.FreezeTime = BASE_FREEZE_TIME;
         }
 
         #region Methods
         //Override of abstract method to verify if movement is valid
-        public override bool NextPositionOccupied(int X, int Y)
-        {
+        public override bool CollisionDetector(int X, int Y)
+        {   //Verify if there is an ennemy in the futur position
             if (PositionX + 1 == X || PositionY + 1 == Y)
             {
                 return true;
@@ -84,26 +99,45 @@ namespace MonsterHunterDLL.Classes
             {   //Key to move up is pressed
                 case ConsoleKey.W:
                     {
-                        //Reduce player's Y coordinate by 1
-                        PositionY--;
+                        //Verify if there is something in futur position
+                        if (!CollisionDetector(PositionX, PositionY))
+                        {
+                            //Reduce player's Y coordinate by 1
+                            PositionY--;
+                        }
                     }
                     break;
                 //Key to move down is pressed
                 case ConsoleKey.S:
-                    {   //Increase player's Y coordinate by 1
-                        PositionY++; 
+                    {
+                        //Verify if there is something in futur position
+                        if (!CollisionDetector(PositionX, PositionY))
+                        {
+                            //Increase player's Y coordinate by 1
+                            PositionY++;
+                        }
                     }
                     break;
                 //Key to move left is pressed
                 case ConsoleKey.A:
-                    {   //Reduce player's X coordinate by 1
-                        PositionX--; 
+                    {
+                        //Verify if there is something in futur position
+                        if (!CollisionDetector(PositionX, PositionY))
+                        {
+                            //Reduce player's X coordinate by 1
+                            PositionX--;
+                        }
                     }
                     break;
                 //Key to move right is pressed
                 case ConsoleKey.D:
-                    {   //Increase player's X coordinate by 1
-                        PositionX++; 
+                    {
+                        //Verify if there is something in futur position
+                        if (!CollisionDetector(PositionX, PositionY))
+                        {
+                            //Increase player's X coordinate by 1
+                            PositionX++;
+                        }
                     }
                     break;
             }

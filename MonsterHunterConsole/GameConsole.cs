@@ -14,8 +14,8 @@ namespace MonsterHunterConsole
                 
                 while (userEntry != "q")
                 {
-                    //Potion newPotion = 
-                    //    new Potion(RNG.Get_Instance.Next(1, Potion.ODDSsz));
+                    //Potion newPotion =
+                    //    new Potion(RNG.Get_Instance.Next(1, Potion.ODDS));
 
                     //Shield newShield = 
                     //    new Shield(RNG.Get_Instance.Next(Shield.MIN_DEFENSE, Shield.MAX_DEFENSE));
@@ -26,6 +26,8 @@ namespace MonsterHunterConsole
                     //Console.WriteLine("Sword Power = " + newSword.Power);
                     //Console.WriteLine("Shield defense = " + newShield.Defense);
                     //Console.WriteLine("Potion type = " + newPotion.potionType);
+
+
 
                     Console.ReadKey();
                     

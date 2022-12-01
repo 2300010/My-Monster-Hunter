@@ -8,6 +8,7 @@ namespace MonsterHunterDLL
         //Declare instance of RNG class and initialize it to null
         private static RNG _instance = null;
 
+        #region Singleton
         //Getter without setter for the RNG instance
         public static RNG Get_Instance
         {
@@ -24,5 +25,6 @@ namespace MonsterHunterDLL
                 return _instance;
             }
         }
+        #endregion
     }
 }

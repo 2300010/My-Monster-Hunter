@@ -8,7 +8,7 @@ namespace MonsterHunterDLL.Classes
         public const int MIN_DEFENSE = 3;
 
         //Declare constants for the the RNG
-        const int ODDS = 5;
+        public const int ODDS = 5;
 
         //Declare variable and initialize to 0
         private int defense = 0;

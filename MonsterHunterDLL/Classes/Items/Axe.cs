@@ -3,17 +3,14 @@ namespace MonsterHunterDLL.Classes
 {
     public class Axe
     {
+        //Declare constants for the the RNG
+        const int ODDS = 3;
+
         //Function to determine if axe is broken
-        public bool IsBroken()
+        public bool IsBroken(int oneInThree)
         {
-            //Declare constants for the the RNG
-            const int chances = 3;
-
-            //Declare variable to receive the 1 in 5 RNG
-            int oneInFive = RNG.Get_Instance.Next(1, chances);
-
             //Verify if the RNG is 1
-            if (oneInFive == 1)
+            if (oneInThree == 1)
             {
                 return true;
             }

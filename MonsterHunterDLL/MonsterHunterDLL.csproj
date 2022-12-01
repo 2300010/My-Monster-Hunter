@@ -41,17 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Axe.cs" />
-    <Compile Include="Classes\Characters.cs" />
+    <Compile Include="Classes\Items\Axe.cs" />
+    <Compile Include="Classes\Characters\Characters.cs" />
     <Compile Include="Classes\Exception_Manager.cs" />
-    <Compile Include="Classes\Hunter.cs" />
+    <Compile Include="Classes\Characters\Hunter.cs" />
+    <Compile Include="Classes\States\IPlayerStates.cs" />
     <Compile Include="Classes\Maps.cs" />
-    <Compile Include="Classes\Monster.cs" />
-    <Compile Include="Classes\Monsters.cs" />
-    <Compile Include="Classes\Potion.cs" />
+    <Compile Include="Classes\Characters\Monster.cs" />
+    <Compile Include="Classes\Characters\Monsters.cs" />
+    <Compile Include="Classes\States\StateInvisiblity.cs" />
+    <Compile Include="Classes\States\StateNormal.cs" />
+    <Compile Include="Classes\Items\Potion.cs" />
     <Compile Include="Classes\RNG.cs" />
-    <Compile Include="Classes\Shield.cs" />
-    <Compile Include="Classes\Sword.cs" />
+    <Compile Include="Classes\Items\Shield.cs" />
+    <Compile Include="Classes\States\StatePoison.cs" />
+    <Compile Include="Classes\States\StateFast.cs" />
+    <Compile Include="Classes\States\StateStrong.cs" />
+    <Compile Include="Classes\Items\Sword.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

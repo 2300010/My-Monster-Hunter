@@ -3,12 +3,14 @@ namespace MonsterHunterDLL.Classes
 {
     public class Sword
     {
+        #region Constants
         //Declare constants for maxPower and minPower
         public const int MAX_POWER = 10;
         public const int MIN_POWER = 4;
 
         //Declare constants for the the RNG
-        const int ODDS = 6;
+        public const int ODDS = 6;
+        #endregion
 
         //Declare variable and initialize to 0
         private int power = 0;

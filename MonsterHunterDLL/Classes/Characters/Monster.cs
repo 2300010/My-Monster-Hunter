@@ -7,12 +7,13 @@ namespace MonsterHunterDLL.Classes
         public Monster(int positionX, int positionY) : base(positionX, positionY)
         {
             //Set freeze time to 2 seconds on creation
-            this.freezeTime = 2;
+            this.FreezeTime = 2000;
         }
 
+        #region Methods
         //Override of abstract method to verify if movement is valid
-        public override bool NextPositionOccupied(int X, int Y)
-        {
+        public override bool CollisionDetector(int X, int Y)
+        {   //Verify if 
             if (PositionX + 1 == X || PositionY + 1 == Y)
             {
                 return true;
@@ -28,7 +29,7 @@ namespace MonsterHunterDLL.Classes
         {
             if (direction == 1)
             {
-                if (!NextPositionOccupied(PositionX, PositionY))
+                if (!CollisionDetector(PositionX, PositionY))
                 {
                     PositionY--;
                 }
@@ -36,16 +37,26 @@ namespace MonsterHunterDLL.Classes
             }
             else if (direction == 2)
             {
-                PositionY++;
+                if (!CollisionDetector(PositionX, PositionY))
+                {
+                    PositionY++;
+                }
             }
             else if (direction == 3)
             {
-                PositionX--;
+                if (!CollisionDetector(PositionX, PositionY))
+                {
+                    PositionX--;
+                }
             }
             else
             {
-                PositionX++;
+                if (!CollisionDetector(PositionX, PositionY))
+                {
+                    PositionX++;
+                }
             }
         }
+        #endregion
     }
 }

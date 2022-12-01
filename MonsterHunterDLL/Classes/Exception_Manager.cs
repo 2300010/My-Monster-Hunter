@@ -12,26 +12,26 @@ namespace MonsterHunterDLL.Classes
         const bool DEBUG_MODE = true;
 
         //Function to manage catched errors
-        public static void errorManager(Exception exception, string sFunctionName)
+        public static void errorManager(Exception exception, string functionName)
         {
             try
             {
                 //Generate detailed error
-                string sDetailledError = DateTime.Now + "|Une erreur s'est produite dans la fonction "
-                    + sFunctionName + " :"
+                string detailledError = DateTime.Now + "|Une erreur s'est produite dans la fonction "
+                    + functionName + " :"
                     + exception.Message;
 
                 //If debug mode is true
                 if (DEBUG_MODE)
                 {   //Show detailed error on screen
-                    Console.WriteLine(sDetailledError);
+                    Console.WriteLine(detailledError);
                 }
 
                 //Open error text file
                 StreamWriter writer = new StreamWriter(TXT_FILE_PATH, true);
 
                 //Write in error text file
-                writer.WriteLine(sDetailledError);
+                writer.WriteLine(detailledError);
 
                 //Close the error text file
                 writer.Close();
