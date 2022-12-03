@@ -5,19 +5,19 @@ namespace MonsterHunterDLL.Classes
     {
         #region Singelton
         //Declare instance of invisible state 
-        private static StateInvisiblity _i_state_instance = null;
+        private static StateInvisiblity siStateInstance = null;
 
         //Declare getter without setter of instance
         public static StateInvisiblity InstanceCreator
         {
             get
             {   //Verify is instance is null before initializing
-                if (_i_state_instance == null)
+                if (siStateInstance == null)
                 {   //Initialize instance
-                    _i_state_instance = new StateInvisiblity();
+                    siStateInstance = new StateInvisiblity();
                 }
                 //Return state
-                return _i_state_instance;
+                return siStateInstance;
             }
         }
         #endregion
@@ -36,9 +36,9 @@ namespace MonsterHunterDLL.Classes
 
         }
 
-        //Implement method to adjust hunter defense in combat
+        //Implement method to adjust hunter fDefense in combat
         public float CalculateDefense(Hunter hunter, int shieldDefense)
-        {   //Normal defense ouput
+        {   //Normal fDefense ouput
             return (hunter.Defense + shieldDefense);
 
         }

@@ -12,19 +12,19 @@ namespace MonsterHunterDLL.Classes
 
         #region Singelton
         //Declare instance of poisoned state 
-        private static StatePoison _p_state_instance = null;
+        private static StatePoison spStateInstance = null;
 
         //Declare getter without setter of instance
         public static StatePoison InstanceCreator
         {
             get
             {   //Verify is instance is null before initializing
-                if (_p_state_instance == null)
+                if (spStateInstance == null)
                 {   //Initialize instance
-                    _p_state_instance = new StatePoison();
+                    spStateInstance = new StatePoison();
                 }
                 //Return state
-                return _p_state_instance;
+                return spStateInstance;
             }
         }
         #endregion
@@ -50,9 +50,9 @@ namespace MonsterHunterDLL.Classes
             return (hunter.Power + swordDmg) * POWER_MODIFIER;
         }
 
-        //Implement method to adjust hunter defense in combat
+        //Implement method to adjust hunter fDefense in combat
         public float CalculateDefense(Hunter hunter, int shieldDefense)
-        {   //Divide defense output in half
+        {   //Divide fDefense output in half
             return (hunter.Defense + shieldDefense) * DEFENSE_MODIFIER;
             
         }

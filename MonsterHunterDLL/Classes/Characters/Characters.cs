@@ -12,147 +12,147 @@ namespace MonsterHunterDLL
 
         #region Mouvement Stats
         //Declare variable for the freeze time when moving
-        private int freezeTime = 0;
+        private int iFreezeTime = 0;
 
         //Declare variables for character position
-        private int positionX = 0;
-        private int positionY = 0;
+        private int iPositionX = 0;
+        private int iPositionY = 0;
 
         //Declare variables for character max position
-        private int maxPositionX = 0;
-        private int maxPositionY = 0;
+        private int iMaxPositionX = 0;
+        private int iMaxPositionY = 0;
         #endregion
 
         #region Stats Properties
         //Declare variables for character stats
-        private float actualHp = 0f;
-        private float power = 0f;
-        private float defense = 0f;
+        private float fActualHp = 0f;
+        private float fPower = 0f;
+        private float fDefense = 0f;
         #endregion
 
         #region Constructors
         //Declare constructor to force two variables on creation
-        protected Characters(int positionX, int positionY)
+        protected Characters(int piPositionX, int piPositionY)
         {
-            this.positionX = positionX;
-            this.positionY = positionY;
+            this.iPositionX = piPositionX;
+            this.iPositionY = piPositionY;
         }
         
         //Declare constructor to access 2 more variables if necessary
-        protected Characters(int positionX, int positionY, int maxPositionX, int maxPositionY)
+        protected Characters(int piPositionX, int piPositionY, int piMaxPositionX, int piMaxPositionY)
         {
-            this.maxPositionX = maxPositionX;
-            this.maxPositionY = maxPositionY;
-            this.positionX = positionX;
-            this.positionY = positionY;
+            this.iMaxPositionX = piMaxPositionX;
+            this.iMaxPositionY = piMaxPositionY;
+            this.iPositionX = piPositionX;
+            this.iPositionY = piPositionY;
         }
         #endregion
 
         #region Getters/Setters
-        //Declare getter and setter for positionX
+        //Declare getter and setter for iPositionX
         public int PositionX 
         { 
-            get => positionX; 
+            get => iPositionX; 
             set
             {   //Verify if position is out of bounds of screen
                 if (value < 0)
                 {
                     //Set position back to 0
-                    positionX = 0;
+                    iPositionX = 0;
                 }//Verify if position is out of bounds of the map
-                else if (value > maxPositionX)
+                else if (value > iMaxPositionX)
                 {   //Set position back to bounds of map
-                    positionX = maxPositionX;
+                    iPositionX = iMaxPositionX;
                 }
                 else 
                 {   //Set position to the new value 
-                    positionX = value; 
+                    iPositionX = value; 
                 }
             }
                  
         }
 
-        //Declare getter and setter for positionY
+        //Declare getter and setter for iPositionY
         public int PositionY 
         { 
-            get => positionY; 
+            get => iPositionY; 
             set
             {   //Verify if position is out of bounds of screen
                 if (value < 0)
                 {   //Set position back to 0
-                    positionY = 0;
+                    iPositionY = 0;
                 }//Verify if position is out of bounds of the map
-                else if (value > maxPositionY)
+                else if (value > iMaxPositionY)
                 {   //Set position back to bounds of map
-                    positionY = maxPositionY;
+                    iPositionY = iMaxPositionY;
                 }
                 else
                 {   //Set position to the new value
-                    positionY = value;
+                    iPositionY = value;
                 }
             }
         }
 
-        //Declare getter and setter for actualHp
+        //Declare getter and setter for fActualHp
         public float ActualHp 
         { 
-            get => actualHp;
+            get => fActualHp;
             set 
             {   //Verify if value is higher than maxHp
                 if (value > MAX_HP)
-                {   //Set actualHp back to maxHp
-                    actualHp = MAX_HP;
+                {   //Set fActualHp back to maxHp
+                    fActualHp = MAX_HP;
                 }
                 else
-                {   //Set actualHp to new value
-                    actualHp = value;
+                {   //Set fActualHp to new value
+                    fActualHp = value;
                 }
             }  
         }
 
-        //Declare getter and setter for power
+        //Declare getter and setter for fPower
         public float Power 
         { 
-            get => power; 
+            get => fPower; 
             set
             {   //Verify if value is lower than 0
                 if (value < 0)
-                {   //Set power back to 0
-                    power = 0;
-                }//Verify if value is higher than max power
+                {   //Set fPower back to 0
+                    fPower = 0;
+                }//Verify if value is higher than max fPower
                 else if (value > MAX_POWER)
-                {   //Set power back to max power
-                    power = MAX_POWER;
+                {   //Set fPower back to max fPower
+                    fPower = MAX_POWER;
                 }
                 else
-                {   //Set power to new value
-                    power = value;
+                {   //Set fPower to new value
+                    fPower = value;
                 }
             } 
         }
 
-        //Declare getter and setter for defense
+        //Declare getter and setter for fDefense
         public float Defense 
         { 
-            get => defense; 
+            get => fDefense; 
             set
             {   //Verify if value is lower than 0
                 if (value < 0)
-                {   //Set defense back to 0
-                    defense = 0;
-                }//Verify if value is higher than max defense
+                {   //Set fDefense back to 0
+                    fDefense = 0;
+                }//Verify if value is higher than max fDefense
                 else if (value > MAX_DEFENSE)
-                {   //Set defense back to max defense
-                    defense = MAX_DEFENSE;
+                {   //Set fDefense back to max fDefense
+                    fDefense = MAX_DEFENSE;
                 }
                 else
-                {   //Set defense to new value
-                    defense = value;
+                {   //Set fDefense to new value
+                    fDefense = value;
                 }
             } 
         }
 
-        public int FreezeTime { get => freezeTime; set => freezeTime = value; }
+        public int FreezeTime { get => iFreezeTime; set => iFreezeTime = value; }
         #endregion
 
         #region Methods
@@ -162,7 +162,7 @@ namespace MonsterHunterDLL
         //Declare mehtod to verify if character is dead
         public bool IsDead()
         {
-            if (this.actualHp <= 0)
+            if (this.fActualHp <= 0)
             {
                 return true;
             }

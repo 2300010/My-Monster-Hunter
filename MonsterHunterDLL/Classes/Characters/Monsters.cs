@@ -5,11 +5,25 @@ namespace MonsterHunterDLL.Classes
 {
     public class Monsters
     {
-        public List<Monster> MonstersPosition()
-        {
-            List<Monster> monsters = new List<Monster>();
+        //Declare 
+        List<Monster> monstersList = new List<Monster>();
 
-            return monsters;
+        //Declare function to return list of monster with position
+        public List<Monster> MonstersPosition
+            (int xPosition, int yPosition, List<Monster> monstersOnMap)
+        {
+            //Verify every element of the list monstersOnMap
+            foreach (Monster monster in monstersOnMap)
+            {   //Verify if the position checked is occupied by 
+                if (monster.PositionX == xPosition && monster.PositionY == yPosition)
+                {
+                    //Add monster found to monstersList
+                    monstersList.Add(monster);
+                }
+            }
+
+            //Return list with monsters
+            return monstersList;
         }
     }
 }

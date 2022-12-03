@@ -3,24 +3,26 @@ namespace MonsterHunterDLL.Classes.States
 {
     public class StateFast : IPlayerStates
     {
+        #region Constants
         //Declare constants for modifier
         private const int FREEZE_TIME_MODIFIER = 2;
+        #endregion
 
         #region Singelton
         //Declare instance of fast state 
-        private static StateFast _f_state_instance = null;
+        private static StateFast sfStateInstance = null;
 
         //Declare getter without setter of instance
         public static StateFast InstanceCreator
         {
             get
             {   //Verify is instance is null before initializing
-                if (_f_state_instance == null)
+                if (sfStateInstance == null)
                 {   //Initialize instance
-                    _f_state_instance = new StateFast();
+                    sfStateInstance = new StateFast();
                 }
                 //Return state
-                return _f_state_instance;
+                return sfStateInstance;
             }
         }
         #endregion
@@ -42,9 +44,9 @@ namespace MonsterHunterDLL.Classes.States
             return (hunter.Power + swordDmg);
         }
 
-        //Implement method to adjust hunter defense in combat
+        //Implement method to adjust hunter fDefense in combat
         public float CalculateDefense(Hunter hunter, int shieldDefense)
-        {   //Normal defense ouput
+        {   //Normal fDefense ouput
             return (hunter.Defense + shieldDefense);
         }
         #endregion

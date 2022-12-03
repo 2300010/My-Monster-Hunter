@@ -11,19 +11,19 @@ namespace MonsterHunterDLL.Classes
 
         #region Singelton
         //Declare instance of strong state 
-        private static StateStrong _s_state_instance = null;
+        private static StateStrong ssStateInstance = null;
 
         //Declare getter without setter of instance
         public static StateStrong InstanceCreator
         {
             get
             {   //Verify is instance is null before initializing
-                if (_s_state_instance == null)
+                if (ssStateInstance == null)
                 {   //Initialize instance
-                    _s_state_instance = new StateStrong();
+                    ssStateInstance = new StateStrong();
                 }
                 //Return state
-                return _s_state_instance;
+                return ssStateInstance;
             }
         }
         #endregion
@@ -45,9 +45,9 @@ namespace MonsterHunterDLL.Classes
             return (hunter.Power + swordDmg) * POWER_MODIFIER;
         }
 
-        //Implement method to adjust hunter defense in combat
+        //Implement method to adjust hunter fDefense in combat
         public float CalculateDefense(Hunter hunter, int shieldDefense)
-        {   //Multiply defense output by 1.5
+        {   //Multiply fDefense output by 1.5
             return (hunter.Defense + shieldDefense) * DEFENSE_MODIFIER;
         }
         #endregion

@@ -5,19 +5,19 @@ namespace MonsterHunterDLL.Classes
     {
         #region Singelton
         //Declare instance of normal state 
-        private static StateNormal _n_state_instance = null;
+        private static StateNormal snStateInstance = null;
 
         //Declare getter without setter of instance
         public static StateNormal InstanceCreator
         {
             get
             {   //Verify is instance is null before initializing
-                if (_n_state_instance == null)
+                if (snStateInstance == null)
                 {   //Initialize instance
-                    _n_state_instance = new StateNormal();
+                    snStateInstance = new StateNormal();
                 }
                 //Return state
-                return _n_state_instance;
+                return snStateInstance;
             }
         }
         #endregion
@@ -39,9 +39,9 @@ namespace MonsterHunterDLL.Classes
             return (hunter.Power + swordDmg);
         }
 
-        //Implement method to adjust hunter defense in combat
+        //Implement method to adjust hunter fDefense in combat
         public float CalculateDefense(Hunter hunter, int shieldDefense)
-        {   //Normal defense ouput
+        {   //Normal fDefense ouput
             return (hunter.Defense + shieldDefense);
         }
         #endregion

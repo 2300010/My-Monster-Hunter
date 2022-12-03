@@ -2,6 +2,7 @@
 
 namespace MonsterHunterDLL.Classes
 {
+    #region Enum State
     //Declare enum to access every state from hunter class
     public enum State
     {
@@ -11,6 +12,7 @@ namespace MonsterHunterDLL.Classes
         Invisible,
         Fast
     }
+    #endregion
 
     public class Hunter : Characters
     {
@@ -71,36 +73,39 @@ namespace MonsterHunterDLL.Classes
         public State HunterState { get => hunterState; set => hunterState = value; }
         #endregion
 
+        #region Constructor
         //Declare constructor for the hunter
         public Hunter(int positionX, int positionY) : base(positionX, positionY)
         {   //Initialize freeze time
             this.FreezeTime = BASE_FREEZE_TIME;
         }
+        #endregion
 
         #region Methods
         //Override of abstract method to verify if movement is valid
         public override bool CollisionDetector(int X, int Y)
-        {   //Verify if there is an ennemy in the futur position
-            if (PositionX + 1 == X || PositionY + 1 == Y)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        {
+            //Declare temporary map to search for obstacles
+            Maps tempMap = new Maps();
+
+            //if ()
+            return false;
+            
+
         }
 
         //Delcare method to move the hunter
-        public void MoveHunter(ConsoleKeyInfo playerMouvement)
+        public void MoveHunter(ConsoleKeyInfo playerMouvement, string selectedMap)
         {
+            //Declare 
+
             //Mouvement manager
             switch (playerMouvement.Key)
             {   //Key to move up is pressed
                 case ConsoleKey.W:
                     {
                         //Verify if there is something in futur position
-                        if (!CollisionDetector(PositionX, PositionY))
+                        if (!CollisionDetector(PositionX, PositionY - 1))
                         {
                             //Reduce player's Y coordinate by 1
                             PositionY--;

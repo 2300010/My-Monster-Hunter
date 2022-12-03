@@ -3,12 +3,14 @@ namespace MonsterHunterDLL.Classes
 {
     public class Monster : Characters
     {
+        #region Constructor
         //Declare construtor for monsters
         public Monster(int positionX, int positionY) : base(positionX, positionY)
         {
             //Set freeze time to 2 seconds on creation
             this.FreezeTime = 2000;
         }
+        #endregion
 
         #region Methods
         //Override of abstract method to verify if movement is valid

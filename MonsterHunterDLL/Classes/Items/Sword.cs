@@ -12,27 +12,34 @@ namespace MonsterHunterDLL.Classes
         public const int ODDS = 6;
         #endregion
 
+        #region Power Variable
         //Declare variable and initialize to 0
         private int power = 0;
+        #endregion
 
+        #region Constructor
         //Declare constructor for sword
         public Sword(int power)
         {
-            //Set sword power to the RNG number while creating
+            //Set sword fPower to the RNG number while creating
             this.power = power;
         }
+        #endregion
 
-        //Getter and setter for the sword power value
+        #region Getter/Setter
+        //Getter and setter for the sword fPower value
         public int Power 
         {
-            //Permits to get the value of the power
+            //Permits to get the value of the fPower
             get
             {
-                //Return the power value
+                //Return the fPower value
                 return power; 
             }
         }
+        #endregion
 
+        #region Method
         //Function to determine if sword is broken
         public bool IsBroken(int oneInFive)
         {
@@ -46,5 +53,6 @@ namespace MonsterHunterDLL.Classes
                 return false;
             }
         }
+        #endregion
     }
 }
