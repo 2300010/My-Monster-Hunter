@@ -70,17 +70,17 @@ namespace MonsterHunterConsole
                     {
                         case 1:
                             {   //Set selected map to the related name index
-                                sSelectedMap = mCurrentMap.MapNameList[iMapChoice - 1];
+                                sSelectedMap = mCurrentMap.maps[iMapChoice - 1];
                             }
                             break;
                         case 2:
                             {   //Set selected map to the related name index
-                                sSelectedMap = mCurrentMap.MapNameList[iMapChoice - 1];
+                                sSelectedMap = mCurrentMap.maps[iMapChoice - 1];
                             }
                             break;
                         case 3:
                             {   //Set selected map to the related name index
-                                sSelectedMap = mCurrentMap.MapNameList[iMapChoice - 1];
+                                sSelectedMap = mCurrentMap.maps[iMapChoice - 1];
                             }
                             break;
                         default:
@@ -101,6 +101,8 @@ namespace MonsterHunterConsole
 
                 //Call function to draw map
                 mCurrentMap.DrawMap();
+
+                Console.ReadKey();
 
                 //Set position of hunter and monsters
 

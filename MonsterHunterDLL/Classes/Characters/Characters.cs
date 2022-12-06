@@ -1,8 +1,13 @@
 ﻿
+using MonsterHunterDLL.Classes;
+using System;
+
 namespace MonsterHunterDLL
 {
     public abstract class Characters
     {
+        //Declare variable
+
         #region Constants
         //Declare constants to limit stats
         public const float MAX_POWER = 7f;
@@ -34,17 +39,34 @@ namespace MonsterHunterDLL
         //Declare constructor to force two variables on creation
         protected Characters(int piPositionX, int piPositionY)
         {
-            this.iPositionX = piPositionX;
-            this.iPositionY = piPositionY;
+            try
+            {
+                this.iPositionX = piPositionX;
+                this.iPositionY = piPositionY;
+            }
+            catch (Exception ex)
+            {
+                Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         
         //Declare constructor to access 2 more variables if necessary
         protected Characters(int piPositionX, int piPositionY, int piMaxPositionX, int piMaxPositionY)
         {
-            this.iMaxPositionX = piMaxPositionX;
-            this.iMaxPositionY = piMaxPositionY;
-            this.iPositionX = piPositionX;
-            this.iPositionY = piPositionY;
+            try
+            {
+                this.iMaxPositionX = piMaxPositionX;
+                this.iMaxPositionY = piMaxPositionY;
+                this.iPositionX = piPositionX;
+                this.iPositionY = piPositionY;
+
+            }
+            catch (Exception ex)
+            {
+                Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         #endregion
 
@@ -54,20 +76,30 @@ namespace MonsterHunterDLL
         { 
             get => iPositionX; 
             set
-            {   //Verify if position is out of bounds of screen
-                if (value < 0)
+            {
+                try
                 {
-                    //Set position back to 0
-                    iPositionX = 0;
-                }//Verify if position is out of bounds of the map
-                else if (value > iMaxPositionX)
-                {   //Set position back to bounds of map
-                    iPositionX = iMaxPositionX;
+                    //Verify if position is out of bounds of screen
+                    if (value < 0)
+                    {
+                        //Set position back to 0
+                        iPositionX = 0;
+                    }//Verify if position is out of bounds of the map
+                    else if (value > iMaxPositionX)
+                    {   //Set position back to bounds of map
+                        iPositionX = iMaxPositionX;
+                    }
+                    else
+                    {   //Set position to the new value 
+                        iPositionX = value;
+                    }
                 }
-                else 
-                {   //Set position to the new value 
-                    iPositionX = value; 
+                catch (Exception ex)
+                {
+                    Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
+                
             }
                  
         }
@@ -77,18 +109,27 @@ namespace MonsterHunterDLL
         { 
             get => iPositionY; 
             set
-            {   //Verify if position is out of bounds of screen
-                if (value < 0)
-                {   //Set position back to 0
-                    iPositionY = 0;
-                }//Verify if position is out of bounds of the map
-                else if (value > iMaxPositionY)
-                {   //Set position back to bounds of map
-                    iPositionY = iMaxPositionY;
+            {
+                try
+                {
+                    //Verify if position is out of bounds of screen
+                    if (value < 0)
+                    {   //Set position back to 0
+                        iPositionY = 0;
+                    }//Verify if position is out of bounds of the map
+                    else if (value > iMaxPositionY)
+                    {   //Set position back to bounds of map
+                        iPositionY = iMaxPositionY;
+                    }
+                    else
+                    {   //Set position to the new value
+                        iPositionY = value;
+                    }
                 }
-                else
-                {   //Set position to the new value
-                    iPositionY = value;
+                catch (Exception ex)
+                {
+                    Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
             }
         }
@@ -97,15 +138,24 @@ namespace MonsterHunterDLL
         public float ActualHp 
         { 
             get => fActualHp;
-            set 
-            {   //Verify if value is higher than maxHp
-                if (value > MAX_HP)
-                {   //Set fActualHp back to maxHp
-                    fActualHp = MAX_HP;
+            set
+            {
+                try
+                {
+                    //Verify if value is higher than maxHp
+                    if (value > MAX_HP)
+                    {   //Set fActualHp back to maxHp
+                        fActualHp = MAX_HP;
+                    }
+                    else
+                    {   //Set fActualHp to new value
+                        fActualHp = value;
+                    }
                 }
-                else
-                {   //Set fActualHp to new value
-                    fActualHp = value;
+                catch (Exception ex)
+                {
+                    Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
             }  
         }
@@ -115,18 +165,27 @@ namespace MonsterHunterDLL
         { 
             get => fPower; 
             set
-            {   //Verify if value is lower than 0
-                if (value < 0)
-                {   //Set fPower back to 0
-                    fPower = 0;
-                }//Verify if value is higher than max fPower
-                else if (value > MAX_POWER)
-                {   //Set fPower back to max fPower
-                    fPower = MAX_POWER;
+            {
+                try
+                {
+                    //Verify if value is lower than 0
+                    if (value < 0)
+                    {   //Set fPower back to 0
+                        fPower = 0;
+                    }//Verify if value is higher than max fPower
+                    else if (value > MAX_POWER)
+                    {   //Set fPower back to max fPower
+                        fPower = MAX_POWER;
+                    }
+                    else
+                    {   //Set fPower to new value
+                        fPower = value;
+                    }
                 }
-                else
-                {   //Set fPower to new value
-                    fPower = value;
+                catch (Exception ex)
+                {
+                    Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
             } 
         }
@@ -136,18 +195,28 @@ namespace MonsterHunterDLL
         { 
             get => fDefense; 
             set
-            {   //Verify if value is lower than 0
-                if (value < 0)
-                {   //Set fDefense back to 0
-                    fDefense = 0;
-                }//Verify if value is higher than max fDefense
-                else if (value > MAX_DEFENSE)
-                {   //Set fDefense back to max fDefense
-                    fDefense = MAX_DEFENSE;
+            {
+                try
+                {
+                    //Verify if value is lower than 0
+                    if (value < 0)
+                    {   //Set fDefense back to 0
+                        fDefense = 0;
+
+                    }//Verify if value is higher than max fDefense
+                    else if (value > MAX_DEFENSE)
+                    {   //Set fDefense back to max fDefense
+                        fDefense = MAX_DEFENSE;
+                    }
+                    else
+                    {   //Set fDefense to new value
+                        fDefense = value;
+                    }
                 }
-                else
-                {   //Set fDefense to new value
-                    fDefense = value;
+                catch (Exception ex)
+                {
+                    Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
             } 
         }
@@ -162,14 +231,24 @@ namespace MonsterHunterDLL
         //Declare mehtod to verify if character is dead
         public bool IsDead()
         {
-            if (this.fActualHp <= 0)
+            try
             {
-                return true;
+                if (this.fActualHp <= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                Exception_Manager.errorManager(ex,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
                 return false;
             }
+            
         }
         #endregion
     }

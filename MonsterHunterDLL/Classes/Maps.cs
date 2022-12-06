@@ -28,7 +28,7 @@ namespace MonsterHunterDLL
         private string[] mapNameList = Directory.GetFiles(MAPS_PATH, MAP_EXT);
 
         //Declare jagged array to receive maps
-        public char[][] selectedMapContent;
+        public char[][] selectedMapContent = new char[0][];
 
         //Declare array for temporary map list
         public string[] maps = new string[3];
@@ -155,9 +155,18 @@ namespace MonsterHunterDLL
         //Function to draw map
         public void DrawMap()
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Exception_Manager.errorManager(ex,
+                        System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
             for (int y = 0; y < selectedMapContent.GetLength(0); y++)
             {
-                for (int x = 0; x < selectedMapContent[y].GetLength(0); x++)
+                for (int x = 0; x < selectedMapContent.GetLength(1); x++)
                 {
                     //Draw character at position y and x
                     Console.Write(selectedMapContent[y][x]);
